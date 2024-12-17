@@ -1,8 +1,12 @@
 const double birdStartX = 100;
 const double birdStartY = 100;
-const double birdWidth = 60;
-const double birdHeight = 40;
-const double gravity = 800;
+const double birdWidth = 20;
+const double birdHeight = 20;
+const double gravity = 400;
 const double jumpStrength = -300;
 const double groundHeight = 200;
 const double groundscrollingSpeed = 100;
+const double pipeInterval = 2.0;
+const double pipeGap = 150;
+const double pipeWidth = 60;
+const double minPipeHeight = 50;

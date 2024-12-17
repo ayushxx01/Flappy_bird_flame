@@ -6,56 +6,55 @@ import 'package:flappy/constants/constants.dart';
 import 'package:flappy/game.dart';
 
 class PipeManager extends Component with HasGameRef<FlappyBird> {
-  //update -> evert second (dt)
-
-  //new pipe spawns
-
+  // Timer to track when to spawn the next pipe
   double pipeSpawnTimer = 0.0;
 
   @override
   void update(double dt) {
-    //generate new pipe at given time interval
+    // Increment the timer by the delta time (time since last update)
     pipeSpawnTimer += dt;
-    const double pipeInterval = 50;
 
+    // Check if the timer has exceeded the interval for spawning pipes
     if (pipeSpawnTimer > pipeInterval) {
+      // Reset the timer
       pipeSpawnTimer = 0.0;
+      // Spawn a new pair of pipes
       spawnPipe();
     }
   }
 
   void spawnPipe() {
     final double screenHeight = gameRef.size.y;
-    const double pipeGap = 150;
-    const double pipeWidth = 60;
-    const double minPipeHeight = 50;
 
-    //calculate pipe heights
-
+    // Calculate the maximum height for the pipes
     final double maxPipeHeight =
         screenHeight - groundHeight - pipeGap - minPipeHeight;
 
-    //height of bottom pipe -> randomly select btw min and max
+    // Randomly determine the height of the bottom pipe within the allowed range
     final double bottomPipeHeight =
         minPipeHeight + Random().nextDouble() * (maxPipeHeight - minPipeHeight);
 
-    //height of top pipe
+    // Calculate the height of the top pipe based on the bottom pipe height and the gap
     final double topPipeHeight =
         screenHeight - groundHeight - bottomPipeHeight - pipeGap;
 
-    // create bottom pipe
-
-    final bottomPipe = Pipe(
-        Vector2(gameRef.size.x, screenHeight - groundHeight - bottomPipeHeight),
+    // Create the bottom pipe with the calculated height
+    final bottomPipe = Pipez(
+        Vector2(gameRef.size.x, 0), // Set y position to 0 for the bottom pipe
         Vector2(pipeWidth, bottomPipeHeight),
         isTopPipe: false);
 
-    //create top pipe
-    final topPipe = Pipe(
-        Vector2(gameRef.size.x, 0), Vector2(pipeWidth, topPipeHeight),
+    // Create the top pipe with the calculated height
+    final topPipe = Pipez(
+        Vector2(
+            gameRef.size.x,
+            screenHeight -
+                groundHeight -
+                topPipeHeight), // Set y position to the bottom for the top pipe
+        Vector2(pipeWidth, topPipeHeight),
         isTopPipe: true);
 
-    //add pipes to the game
+    // Add the pipes to the game
     gameRef.add(bottomPipe);
     gameRef.add(topPipe);
   }
