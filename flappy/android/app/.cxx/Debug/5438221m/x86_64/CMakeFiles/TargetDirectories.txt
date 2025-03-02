@@ -1,0 +1,2 @@
+C:/Users/ayush/OneDrive/Desktop/flappy (1)/flappy/android/app/.cxx/Debug/5438221m/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/ayush/OneDrive/Desktop/flappy (1)/flappy/android/app/.cxx/Debug/5438221m/x86_64/CMakeFiles/rebuild_cache.dir
