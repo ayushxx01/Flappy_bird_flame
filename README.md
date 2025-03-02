@@ -11,10 +11,10 @@ A simple Flappy Bird replica built using the **Flame Engine** in Flutter. This g
 
 ## Screenshots 📸  
 ### Game Start  
-![Game Start](lib/screenshots/play.png)  
+![Game Start](flappy/lib/screenshots/play.png)  
 
 ### Gameplay + Score
-![Gameplay](lib/screenshots/score.png)  
+![Gameplay](flappy/lib/screenshots/score.png)  
 
 ## How to Play 🎯  
 - Tap anywhere on the screen to make the bird flap.  
